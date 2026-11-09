@@ -1,0 +1,13 @@
+{
+  "name": "api-banco",
+  "version": "1.0.0",
+  "description": "Exercício 2 - Compose com API + Banco de Dados",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.22.3",
+    "pg": "^8.23.1"
+  }
+}
