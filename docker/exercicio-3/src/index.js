@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("API do exercício 2 funcionando!");
+  res.send("API do exercício 3 funcionando!");
 });
 
 app.get("/mensagens", async (req, res) => {
