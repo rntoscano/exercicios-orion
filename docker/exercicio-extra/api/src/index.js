@@ -10,6 +10,15 @@ app.get("/", (req, res) => {
   res.send("API do desafio extra funcionando!");
 });
 
+app.get("/health", async (req, res) => {
+  try {
+    await pool.query("SELECT 1");
+    res.json({ status: "ok", banco: "ok" });
+  } catch (erro) {
+    res.status(503).json({ status: "erro", banco: "indisponível" });
+  }
+});
+
 app.get("/mensagens", async (req, res) => {
   try {
     const { rows } = await pool.query("SELECT * FROM mensagens ORDER BY id");
