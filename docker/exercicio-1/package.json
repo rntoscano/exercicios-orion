@@ -1,0 +1,12 @@
+{
+  "name": "hello-container",
+  "version": "1.0.0",
+  "description": "Exercício 1 - Dockerfile + Compose",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.22.3"
+  }
+}
