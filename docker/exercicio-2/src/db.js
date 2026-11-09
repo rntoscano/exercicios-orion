@@ -8,6 +8,11 @@ const pool = new Pool({
   port: 5432,
 });
 
+// Sem este listener, uma conexão perdida com o banco derruba a API inteira
+pool.on("error", (erro) => {
+  console.error("Conexão com o banco perdida:", erro.message);
+});
+
 async function criarTabela() {
   await pool.query(`
     CREATE TABLE IF NOT EXISTS mensagens (
