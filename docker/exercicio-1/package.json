@@ -1,0 +1,16 @@
+{
+  "name": "hello-container",
+  "version": "1.0.0",
+  "description": "Exercício 1 - Dockerfile + Compose",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon --legacy-watch src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.22.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
