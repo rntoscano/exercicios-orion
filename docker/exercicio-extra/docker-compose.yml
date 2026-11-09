@@ -1,0 +1,50 @@
+name: orion-desafio
+
+services:
+  api:
+    build:
+      context: ./api
+      target: dev
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_USER: ${DB_USER:-orion}
+      DB_PASS: ${DB_PASS:-orion123}
+      DB_NAME: ${DB_NAME:-orion}
+    volumes:
+      - ./api/src:/app/src
+    networks:
+      - rede-orion
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${DB_USER:-orion}
+      POSTGRES_PASSWORD: ${DB_PASS:-orion123}
+      POSTGRES_DB: ${DB_NAME:-orion}
+    volumes:
+      - dados-postgres:/var/lib/postgresql/data
+    networks:
+      - rede-orion
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  dados-postgres:
+
+networks:
+  rede-orion:
