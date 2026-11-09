@@ -34,7 +34,9 @@ docker compose up -d --build
 |---|---|
 | Status da API | http://localhost:3000/health → `{"status":"ok","banco":"ok"}` |
 | Mensagens | http://localhost:3000/mensagens |
-| Adminer | http://localhost:8080 (sistema **PostgreSQL**, servidor `db`, usuário e senha do `.env`) |
+| Adminer | http://localhost:8080/?pgsql=db&username=orion&db=orion (já abre com PostgreSQL, servidor `db`, usuário e banco preenchidos; falta só a senha do `.env`, padrão `orion123`) |
+
+> Abrindo só `http://localhost:8080`, o Adminer vem com **MySQL** selecionado: troque o sistema para **PostgreSQL**. A imagem oficial permite pré-preencher apenas o servidor (`ADMINER_DEFAULT_SERVER=db`), não o sistema.
 
 Para gravar uma mensagem:
 
