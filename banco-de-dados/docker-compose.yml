@@ -1,0 +1,41 @@
+name: bootcamp-db
+
+services:
+  db_postgres:
+    image: postgres:16-alpine
+    container_name: db_postgres
+    environment:
+      POSTGRES_DB: orion_db
+      POSTGRES_USER: orion_user
+      POSTGRES_PASSWORD: orion_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - dados-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orion_user -d orion_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  db_mongo:
+    image: mongo:7
+    container_name: db_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: orion_admin
+      MONGO_INITDB_ROOT_PASSWORD: orion_admin_pass
+    ports:
+      - "27017:27017"
+    volumes:
+      - dados-mongo:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  dados-postgres:
+  dados-mongo:
