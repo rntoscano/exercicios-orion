@@ -1,0 +1,17 @@
+{
+  "name": "api-dev-prod",
+  "version": "1.0.0",
+  "description": "Exercício 3 - Boas práticas + múltiplos ambientes",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon --legacy-watch src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.22.3",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
