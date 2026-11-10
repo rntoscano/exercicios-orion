@@ -1,0 +1,7 @@
+# Só a pasta scripts/ precisa ir para a imagem
+prints/
+README.md
+exercicio-4.js
+docker-compose*.yml
+.dockerignore
+.git

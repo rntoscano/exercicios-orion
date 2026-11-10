@@ -1,0 +1,19 @@
+name: exercicio-4-prod
+
+services:
+  db_mongo:
+    build:
+      context: .
+      target: prod
+    image: exercicio-4-mongo:prod
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: orion_admin
+      MONGO_INITDB_ROOT_PASSWORD: orion_admin_pass
+    # Sem volumes montados: os scripts de carga já estão dentro da imagem
+    # Sem porta publicada: o banco fica acessível só pela rede do Docker
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
