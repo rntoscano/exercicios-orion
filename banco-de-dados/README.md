@@ -4,7 +4,7 @@ Exercícios de banco relacional (PostgreSQL) e não relacional (MongoDB).
 
 ## Ambiente
 
-O `docker-compose.yml` desta pasta sobe os dois bancos ao mesmo tempo:
+O `docker-compose.yml` desta pasta é o arquivo do material de apoio, sem alterações. Ele sobe os dois bancos ao mesmo tempo:
 
 ```bash
 cd banco-de-dados
@@ -13,6 +13,11 @@ docker compose ps   # os dois serviços devem aparecer como "healthy"
 ```
 
 ![Ambiente com PostgreSQL e MongoDB rodando](prints/ambiente.png)
+
+| Serviço | Container | Imagem | Porta |
+|---|---|---|---|
+| `db_postgres` | `orion_postgres_db` | `postgres:16-alpine` | `5432` |
+| `db_mongo` | `orion_mongo_db` | `mongo:latest` | `27017` |
 
 ### Dados de conexão
 
