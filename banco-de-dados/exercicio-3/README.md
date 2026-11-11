@@ -7,7 +7,7 @@ Coleção `posts` de um blog no MongoDB, com documentos de formatos diferentes p
 Com o ambiente da pasta `banco-de-dados/` no ar:
 
 ```bash
-docker exec -i db_mongo mongosh -u orion_admin -p orion_admin_pass --quiet --file /dev/stdin < exercicio-3.js
+docker exec -i orion_mongo_db mongosh -u orion_admin -p orion_admin_pass --quiet --file /dev/stdin < exercicio-3.js
 ```
 
 O script usa o banco `blog` e apaga a coleção `posts` no começo, então pode ser executado várias vezes.
