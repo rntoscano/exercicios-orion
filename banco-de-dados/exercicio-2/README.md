@@ -7,7 +7,7 @@ Consultas que combinam as tabelas `alunos` e `cursos` do Exercício 1 usando `JO
 Primeiro rode o Exercício 1, que cria as tabelas e os dados. Depois:
 
 ```bash
-docker exec -i db_postgres psql -U orion_user -d orion_db < exercicio-2.sql
+docker exec -i orion_postgres_db psql -U orion_user -d orion_db < exercicio-2.sql
 ```
 
 ## O que o script faz
