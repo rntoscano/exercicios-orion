@@ -7,7 +7,7 @@ Criação das tabelas `cursos` e `alunos` no PostgreSQL, com chave primária, ch
 Com o ambiente da pasta `banco-de-dados/` no ar:
 
 ```bash
-docker exec -i db_postgres psql -U orion_user -d orion_db < exercicio-1.sql
+docker exec -i orion_postgres_db psql -U orion_user -d orion_db < exercicio-1.sql
 ```
 
 O script apaga e recria as tabelas, então pode ser executado várias vezes.
