@@ -1,0 +1,24 @@
+name: exercicio-4-dev
+
+services:
+  db_mongo:
+    build:
+      context: .
+      target: dev
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: orion_admin
+      MONGO_INITDB_ROOT_PASSWORD: orion_admin_pass
+    ports:
+      - "27018:27017"
+    volumes:
+      # Volume local: os scripts da pasta são lidos direto do computador
+      - ./scripts:/docker-entrypoint-initdb.d:ro
+      - dados-dev:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  dados-dev:
